@@ -1,18 +1,15 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        String s = scan.nextLine();
-        char alphabet = 97;
-        int index;
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String str = reader.readLine();
 
         for (int i = 0; i < 26; i++) {
-            index = s.indexOf(String.valueOf(alphabet++));
-            if (index < 0) 
-                index = -1;
-            
-            System.out.println(index);
+            int index = str.indexOf(Character.toString((97 + i)));
+            System.out.println(index >= 0 ? index : -1);
         }
     }
 }
