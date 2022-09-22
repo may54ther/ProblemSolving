@@ -7,10 +7,7 @@ public class Main {
         String answer = "";
 
         switch (score / 10) {
-            case 10:
-                answer = "A";
-                break;
-            case 9:
+            case 10:  case 9:
                 answer = "A";
                 break;
             case 8:
