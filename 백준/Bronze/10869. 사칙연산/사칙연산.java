@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String num = new Scanner(System.in).nextLine();
-        int a = Integer.parseInt(num.split(" ")[0]);
-        int b = Integer.parseInt(num.split(" ")[1]);
+        Scanner scan = new Scanner(System.in);
+        int a = scan.nextInt();
+        int b = scan.nextInt();
 
         System.out.println(a + b);
         System.out.println(a - b);
