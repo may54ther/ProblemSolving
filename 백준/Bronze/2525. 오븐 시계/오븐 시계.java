@@ -5,15 +5,13 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         int hour = scan.nextInt();
         int minute = scan.nextInt();
-        int timer = scan.nextInt();
+        int cookingTime = scan.nextInt();
 
-        int sum = minute + timer;
-        int divHour = Math.floorDiv(sum, 60);
-        int divMinute = sum % 60;
-
-        hour = (hour + divHour) % 24;
-        minute = divMinute;
-
+        int totalMinute = (hour * 60) + minute + cookingTime;
+        
+        hour = Math.floorDiv(totalMinute, 60) % 24;
+        minute = totalMinute % 60;
+        
         System.out.println(hour + " " + minute);
     }
 }
