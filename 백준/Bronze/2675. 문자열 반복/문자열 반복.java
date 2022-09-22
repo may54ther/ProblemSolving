@@ -1,22 +1,17 @@
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int size = scan.nextInt();
-        int[] counts = new int[size];
-        String[] words = new String[size];
+        int loop = scan.nextInt();
 
-        for (int i = 0; i < size; i++) {
-            counts[i] = scan.nextInt();
-            words[i] = scan.nextLine().trim();
-        }
+        for (int i = 0; i < loop; i++) {
+            int count = scan.nextInt();
+            String[] word = scan.nextLine().trim().split("");
 
-        for (int i = 0; i < size; i++) {
-            for (char word : words[i].toCharArray()) {
-                for (int j = 0; j < counts[i]; j++) {
-                    System.out.print(word);
+            for (String w : word) {
+                for (int j = 0; j < count; j++) {
+                    System.out.print(w);
                 }
             }
             System.out.println();
