@@ -1,26 +1,24 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String[] arr = new String[2];
-        int sum;
+        String str;
+        int a, b;
+        StringTokenizer st;
 
-        while (true) {
-            try {
-                arr = br.readLine().split(" ");
-                sum = Integer.parseInt(arr[0]) + Integer.parseInt(arr[1]);
-                bw.write(String.valueOf(sum));
-                bw.newLine();
-                bw.flush();
-            } catch (Exception e) {
-                break;
-            }
+        while ((str = br.readLine()) != null) {
+            st = new StringTokenizer(str);
+            a = Integer.parseInt(st.nextToken());
+            b = Integer.parseInt(st.nextToken());
+            bw.write(a + b + "\n");
         }
+        
+        br.close();
+        bw.flush();
+        bw.close();
     }
 }
