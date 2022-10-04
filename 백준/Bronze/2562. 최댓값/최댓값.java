@@ -6,16 +6,15 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int[] number = new int[9];
-        int maxIndex = 0, maxValue = 0;
 
-        for (int i = 0; i < 9; i++) {
-            number[i] = Integer.parseInt(br.readLine());
-            if (maxValue < number[i]) {
-                maxValue = number[i];
-                maxIndex = i + 1;
+        int max = 0, index = 0;
+        for (int i = 1; i <= 9; i++) {
+            int n = Integer.parseInt(br.readLine());
+            if (max < n) {
+                max = n;
+                index = i;
             }
         }
-        System.out.printf("%d\n%d", maxValue, maxIndex);
+        System.out.printf("%d\n%d", max, index);
     }
 }
