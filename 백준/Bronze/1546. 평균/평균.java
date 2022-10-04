@@ -7,16 +7,14 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        int[] scores = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int max = 0;
-        float result = 0;
+        int[] scores = Arrays.stream(br.readLine().split(" "))
+                .mapToInt(Integer::parseInt).sorted().toArray();
+        int max = scores[n - 1];
 
+        float sum = 0;
         for (int i = 0; i < n; i++) {
-            result += scores[i];
-            max = Math.max(max, scores[i]);
+            sum += (float) scores[i] / max * 100;
         }
-        
-        result = (result / max * 100) / n;
-        System.out.println(result);
+        System.out.println(sum / n);
     }
 }
