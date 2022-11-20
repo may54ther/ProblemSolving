@@ -1,27 +1,20 @@
 import java.util.*;
 
 class Solution {
+    
     public int solution(int[][] triangle) {
-        int N = triangle.length;
-        int[][] dp = new int[N][N];
-        int sum = 0;
         
-        for (int x = 0; x < N; x++) {
-            for (int y = 0; y < triangle[x].length; y++) {
-                int y2 = y;
-
-                dp[x][y] = triangle[x][y];
-                
-                if (x > 0) {
-                    if (y > 0) y2 = y - 1;
-                    dp[x][y] += Math.max(dp[x - 1][y2], dp[x - 1][y]);
-                }
-                
-                if (x == N - 1)
-                    sum = Math.max(dp[x][y], sum);
+        int N = triangle.length;
+        
+        for (int x = 1; x < N; x++) {
+            triangle[x][0] += triangle[x-1][0]; 
+            triangle[x][x] += triangle[x-1][x-1];
+            
+            for (int y = 1; y < x; y++) {
+                triangle[x][y] += Math.max(triangle[x-1][y-1], triangle[x-1][y]);
             }
         }
         
-        return sum;
+        return Arrays.stream(triangle[N-1]).max().getAsInt();
     }
 }
