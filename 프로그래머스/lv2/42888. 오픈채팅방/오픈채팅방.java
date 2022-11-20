@@ -2,38 +2,39 @@
 import java.util.*;
 
 class Solution {
-
+    
+    private static final String ENTER_MESSAGE = "님이 들어왔습니다.";
+    private static final String LEAVE_MESSAGE = "님이 나갔습니다.";
+    
+    HashMap<String, String> memberMap = new HashMap<>();
+        
+    
     public String[] solution(String[] record) {
         
-        String ENTER_MESSAGE = "님이 들어왔습니다.";
-        String LEAVE_MESSAGE = "님이 나갔습니다.";
+        ArrayList<String> memberLog = new ArrayList<>();
 
-        HashMap<String, String> members = new HashMap<>();
-        ArrayList<String> logs = new ArrayList<>();
-
-        for (String text : record) {
-            StringTokenizer st = new StringTokenizer(text, " ");
+        for (String r : record) {
+            StringTokenizer st = new StringTokenizer(r);
             String state = st.nextToken();
             String uid = st.nextToken();
 
+            if (!state.equals("Change"))
+                memberLog.add(uid + "," + state);
+
             if (st.hasMoreTokens()) {
-                String nickname = st.nextToken();
-                members.put(uid, nickname);
+                memberMap.put(uid, st.nextToken());
             }
-
-            if (state.equals("Enter")) 
-                logs.add(uid + ENTER_MESSAGE);
-            if (state.equals("Leave"))
-                logs.add(uid + LEAVE_MESSAGE);
         }
 
-        int size = logs.size(), n = 0;
-        String[] answer = new String[size];
-        for (String log : logs) {
-            String uid = log.substring(0, 7);
-            answer[n++] = log.replace(uid, members.get(uid));
+        String[] answer = new String[memberLog.size()];
+        for (int i = 0; i < memberLog.size(); i++) {
+            String[] st = memberLog.get(i).split(",");
+            String uid = st[0];
+            String state = st[1];
+            String message = state.equals("Enter") ? ENTER_MESSAGE : LEAVE_MESSAGE;
+
+            answer[i] = memberMap.get(uid) + message;
         }
-        
         return answer;
     }
 }
