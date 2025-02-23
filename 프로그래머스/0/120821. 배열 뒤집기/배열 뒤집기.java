@@ -1,13 +1,9 @@
+import java.util.stream.IntStream;
+
 class Solution {
     public int[] solution(int[] num_list) {
-       
-       int i = num_list.length;
-       
-       int[] answer = new int[i];
-       for(int num : num_list){
-           answer[--i] = num;
-       }
-       
-       return answer;
-   }
+        return IntStream.rangeClosed(1, num_list.length)
+                .map(i -> num_list[num_list.length - i])
+                .toArray();
+    }
 }
