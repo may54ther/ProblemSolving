@@ -6,7 +6,7 @@ public class Solution {
         int n = sc.nextInt();
 
         for(int i=1; i<=n; i++) {
-            System.out.println(String.format("%"+i+"s", "").replace(" ", "*"));  
+            System.out.println("*".repeat(i));  
         }
     }
 }
