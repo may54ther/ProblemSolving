@@ -5,13 +5,8 @@ class Solution {
         int size = num_list.length;
         int[] answer = new int[size];
         
-        int index = 0;
-        for(int i = n; i < size; i++) {
-            answer[index++] = num_list[i];
-        }
-        for(int i = 0; i < n; i++) {
-            answer[index++] = num_list[i];
-        }
+        System.arraycopy(num_list, n, answer, 0, size - n);
+        System.arraycopy(num_list, 0, answer, size - n, n);
         
         return answer;
     }
