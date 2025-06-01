@@ -1,13 +1,10 @@
-import java.util.Arrays;
+import java.util.stream.*;
 
 class Solution {
     public int[] solution(int[] num_list, int n) {
-        int size = num_list.length;
-        int[] answer = new int[size];
-        
-        System.arraycopy(num_list, n, answer, 0, size - n);
-        System.arraycopy(num_list, 0, answer, size - n, n);
-        
-        return answer;
+        return IntStream.concat(
+                IntStream.range(n, num_list.length).map(i -> num_list[i]),
+                IntStream.range(0, n).map(i -> num_list[i])
+        ).toArray();
     }
 }
