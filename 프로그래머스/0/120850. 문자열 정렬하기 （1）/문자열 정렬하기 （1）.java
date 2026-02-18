@@ -2,10 +2,9 @@ import java.util.*;
 
 class Solution {
     public int[] solution(String my_string) {
-        return my_string
+        return my_string.replaceAll("[^0-9]", "")
                 .chars()
-                .filter(Character::isDigit)
-                .map(c -> c - '0')
+                .map(Character::getNumericValue)
                 .sorted()
                 .toArray();
     }
