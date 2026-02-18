@@ -3,9 +3,11 @@ class Solution {
         char[] arr = rsp.toCharArray();
         
         for(int i = 0; i < arr.length; i++) {
-            if(arr[i] == '2') arr[i] = '0';
-            else if(arr[i] == '0') arr[i] = '5';
-            else arr[i] = '2';
+            switch(arr[i]) {
+                case '2': arr[i] = '0'; break;
+                case '0': arr[i] = '5'; break;
+                case '5': arr[i] = '2'; break;
+            }
         }
         return new String(arr);
     }
